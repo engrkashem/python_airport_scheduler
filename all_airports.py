@@ -1,5 +1,6 @@
 from csv import reader
 from airport import Airport
+from haversine_distance import find_haversine_distance
 
 
 class All_Airports:
@@ -34,7 +35,7 @@ class All_Airports:
                     currency_code = country_currency.get(line[3])
                     rate = currency_rates.get(currency_code)
                     airports[line[4]] = Airport(
-                        line[0], line[1], line[2], line[3], line[6], line[7], rate)
+                        line[4], line[1], line[2], line[3], line[6], line[7], rate)
             except KeyError as e:
                 print(e)
             # Alternate way to eleminate keyError
@@ -45,8 +46,23 @@ class All_Airports:
                     line[0], line[1], line[2], line[3], line[6], line[7], rate) """
         file.close()
         self.airports = airports
-        for airport in self.airports.items():
-            print(airport)
+        # for airport in self.airports.items():
+        #     print(airport)
+
+    def distance_between_two_airports(self, start_airport_code, end_airport_code):
+        origin_airport = self.airports[start_airport_code]
+        destination_airport = self.airports[end_airport_code]
+        distance = find_haversine_distance(
+            origin_airport.lat, origin_airport.lon, destination_airport.lat, destination_airport.lon)
+        return distance
+
+    def get_ticket_price(self, start_airport_code, end_airport_code):
+        distance = self.distance_between_two_airports(
+            start_airport_code, end_airport_code)
+        start_airport = self.airports[start_airport_code]
+        fare = distance*1000*float(start_airport.usd_rate)
+        return fare
 
 
-All_Airports()
+world_tour = All_Airports()
+print(world_tour.get_ticket_price('DAC', 'PRA'))
