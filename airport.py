@@ -1,7 +1,9 @@
 
 class Airport:
-    def __init__(self, name, country, lat, long, fare) -> None:
+    def __init__(self, code, name, city, country, lat, long, fare) -> None:
+        self.code = code
         self.port_name = name
+        self.city = city
         self.country = country
         self.lat = lat
         self.long = long
