@@ -16,6 +16,7 @@ class Travel_agent:
         distance = self.all_airports.distance_between_two_airports(
             start_port_code, end_port_code)
         air_craft = self.air_lines.get_air_craft_by_distance(distance)
+        # print('distance: ', distance)
         return [air_craft, price]
 
     def make_trip_multi_city_one_way(self):

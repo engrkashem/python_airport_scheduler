@@ -26,5 +26,5 @@ class All_Airports:
         return fare
 
 
-world_tour = All_Airports()
-print(world_tour.get_ticket_price('DAC', 'PRA'))
+# world_tour = All_Airports()
+# print(world_tour.distance_between_two_airports('DAC', 'PRA'))

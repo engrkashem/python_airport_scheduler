@@ -4,7 +4,7 @@ class Aircraft:
         self.manufacturer = manufacturer
         self.code = code
         self.typ = typ
-        self.flight_range = flight_range
+        self.flight_range = int(flight_range)
 
     def get_manufacturer_info(self):
         return self.manufacturer

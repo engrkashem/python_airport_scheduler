@@ -1,5 +1,6 @@
 from csv import reader
 from aircraft import Aircraft
+from random import choice
 
 
 class Air_lines:
@@ -25,9 +26,11 @@ class Air_lines:
         return self.air_crafts.get(air_craft_code)
 
     def get_air_craft_by_distance(self, distance):
-        for air_craft in self.air_crafts.items():
-            if air_craft.flight_range > distance:
-                return air_craft
+        air_crafts = []
+        for air_craft in self.air_crafts.values():
+            if air_craft.flight_range > distance/2:
+                air_crafts.append(air_craft)
+        return choice(air_crafts)
 
 
-Air_lines()
+# Air_lines()
