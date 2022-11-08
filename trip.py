@@ -8,4 +8,4 @@ class Trip:
         self.trip_route = route
 
     def __repr__(self) -> str:
-        return f'Trip Started from {self.trip_cities}, Air_Craft: {self.air_craft}, Route: {self.trip_route}, Cost: {self.cost}'
+        return f'Trip Started from {self.trip_cities}, Air_Craft: {self.air_craft}, Route: {self.trip_route}, Cost: {self.fare}'

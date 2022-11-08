@@ -1,6 +1,7 @@
 from all_airports import All_Airports
 from air_lines import Air_lines
 from trip import Trip
+from itertools import permutations
 
 
 class Travel_agent:
@@ -59,7 +60,23 @@ class Travel_agent:
     '''
 
     def make_trip_multi_city_one_way_flexible_route(self, trip_cities, journey_date):
-        pass
+        start_city = trip_cities[0]
+        flex_cities = trip_cities[1:]
+        min_cost = float('inf')
+        min_cost_trips = None
+
+        for seq in permutations(flex_cities):
+            flex_route = [start_city]+list(seq)
+            fixed_route_trips_for_every_seq = self.make_trip_multi_city_one_way_fixed_route(
+                flex_route, journey_date)
+            trip_cost = 0
+            for trip in fixed_route_trips_for_every_seq:
+                trip_cost += trip.fare
+            if trip_cost < min_cost:
+                min_cost = trip_cost
+                min_cost_trips = fixed_route_trips_for_every_seq
+
+        # DUB ('LHR', 'SYD', 'JFK')
 
     def __repr__(self) -> str:
         return f'Travel Agent: {self.name}'
