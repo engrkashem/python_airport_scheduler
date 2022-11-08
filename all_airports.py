@@ -1,5 +1,4 @@
-from extract_airports import get_all_airporft
-from haversine_distance import find_haversine_distance
+from required_functions import get_all_airporft, find_haversine_distance
 
 
 class All_Airports:
