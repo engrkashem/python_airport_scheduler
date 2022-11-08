@@ -22,7 +22,7 @@ class All_Airports:
         distance = self.distance_between_two_airports(
             start_airport_code, end_airport_code)
         start_airport = self.airports[start_airport_code]
-        fare = distance*1000*float(start_airport.usd_rate)
+        fare = distance*10*float(start_airport.usd_rate)
         return fare
 
 
