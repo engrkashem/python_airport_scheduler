@@ -33,15 +33,18 @@ def main():
         print('Journey Date: ', trip.journey_date, end='\n\n') """
 
     # trip_cities_flex_route = ['DAC', 'DXB', 'MUC', 'LTQ', 'VCE', 'MTL', 'NYC']
-    trip_cities_flex_route = ['DUB', 'LHR', 'SYD', 'JFK']
+    trip_cities_flex_route = ['DUB', 'LHR', 'SYD', 'JFK', 'ORD', 'DAC']
     journey_dates = ['10/11/2022', '18/11/2022', '28/11/2022',
                      '08/12/2022', '18/12/2022', '28/12/2022', '1/1/2023']
     trips_info = sadat_tours.make_trip_multi_city_one_way_flexible_route(
         trip_cities_flex_route, journey_dates)
-    """ for trip in trips_info:
+
+    for trip in trips_info[0]:
+        print(trip)
         print('Air Craft: ', trip.air_craft)
-        print('Ticket Fare: ', trip.fare)
-        print('Journey Date: ', trip.journey_date, end='\n\n') """
+        print('Ticket Fare: $', trip.fare)
+        print('Journey Date: ', trip.journey_date, end='\n\n')
+    print('Total Cost: $', round(trips_info[1]))
 
 
 if __name__ == "__main__":

@@ -75,6 +75,7 @@ class Travel_agent:
             if trip_cost < min_cost:
                 min_cost = trip_cost
                 min_cost_trips = fixed_route_trips_for_every_seq
+        return min_cost_trips, min_cost
 
         # DUB ('LHR', 'SYD', 'JFK')
 
